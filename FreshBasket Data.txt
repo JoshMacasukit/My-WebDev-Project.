@@ -1,0 +1,61 @@
+{
+    "users": [
+        {
+            "id": "USR698bfaf8620de",
+            "name": "Joshua Macasukit",
+            "email": "joshuamacasukit69@gmail.com",
+            "status": "Enabled",
+            "history": [
+                "Account created",
+                "Account Disabled",
+                "Account Enabled",
+                "Account Disabled",
+                "Account Enabled"
+            ]
+        },
+        {
+            "id": "USR698bfc0ecc01b",
+            "name": "Josh",
+            "email": "josh@gmail.com",
+            "status": "Enabled",
+            "history": [
+                "Account created",
+                "Profile updated",
+                "Account Disabled",
+                "Account Enabled",
+                "Account Disabled",
+                "Account Enabled",
+                "Account Disabled",
+                "Account Enabled"
+            ]
+        }
+    ],
+    "products": [
+        {
+            "id": "PROD_698bfabf56796",
+            "name": "Banana",
+            "price": "12.50",
+            "stock": "1000"
+        },
+        {
+            "id": "PROD_698bfaca0ff41",
+            "name": "Apples",
+            "price": "12.50",
+            "stock": "769"
+        },
+        {
+            "id": "PROD_698bfad70aba1",
+            "name": "Orange",
+            "price": "10.25",
+            "stock": "988"
+        }
+    ],
+    "orders": [],
+    "logs": [],
+    "reports": {
+        "sales": [],
+        "deliveries": [],
+        "products": [],
+        "users": []
+    }
+}
