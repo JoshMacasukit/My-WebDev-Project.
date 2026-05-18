@@ -1,0 +1,61 @@
+app_login:
+    path: /login
+    controller: App\Controller\AuthController::login
+
+app_signup:
+    path: /signup
+    controller: App\Controller\AuthController::signup
+
+app_logout:
+    path: /logout
+    controller: App\Controller\AuthController::logout
+
+# ADMIN
+app_admin:
+    path: /admin
+    controller: App\Controller\AdminController::dashboard
+
+app_admin_products:
+    path: /admin/products
+    controller: App\Controller\AdminController::products
+
+app_admin_orders:
+    path: /admin/orders
+    controller: App\Controller\AdminController::orders
+
+app_admin_users:
+    path: /admin/users
+    controller: App\Controller\AdminController::users
+
+app_admin_reports:
+    path: /admin/reports
+    controller: App\Controller\AdminController::reports
+
+# CUSTOMER
+app_customer_home:
+    path: /customer
+    controller: App\Controller\CustomerController::home
+
+app_customer_about:
+    path: /customer/about
+    controller: App\Controller\CustomerController::about
+
+app_customer_shop:
+    path: /customer/shop
+    controller: App\Controller\CustomerController::shop
+
+app_customer_services:
+    path: /customer/services
+    controller: App\Controller\CustomerController::services
+
+app_customer_contact:
+    path: /customer/contact
+    controller: App\Controller\CustomerController::contact
+
+app_customer_cart:
+    path: /customer/cart
+    controller: App\Controller\CustomerController::cart
+
+app_customer_checkout:
+    path: /customer/checkout
+    controller: App\Controller\CustomerController::checkout
