@@ -1,0 +1,27 @@
+{% extends 'admin/layout.html.twig' %}
+{% block body %}
+<h2>Users</h2>
+
+{% for u in users %}
+<div class="card">
+<form method="post">
+<input type="hidden" name="id" value="{{ u.id }}">
+<input name="name" value="{{ u.name }}">
+<input name="email" value="{{ u.email }}">
+<button name="action" value="edit">Edit</button>
+<button name="action" value="toggle">
+{{ u.status == 'Enabled' ? 'Disable' : 'Enable' }}
+</button>
+</form>
+
+<small>
+History:
+<ul>
+{% for h in u.history %}
+<li>{{ h }}</li>
+{% endfor %}
+</ul>
+</small>
+</div>
+{% endfor %}
+{% endblock %}

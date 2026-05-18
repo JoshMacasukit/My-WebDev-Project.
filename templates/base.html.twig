@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}FreshBasket{% endblock %}</title>
+
+    <!-- Brand Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --deep-green: #255612;
+            --olive-green: #818234;
+            --light-green: #DFE1A0;
+            --golden-orange: #D5921F;
+            --muted-green: #C1C074;
+            --error-red: #b00020;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--light-green), #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--deep-green);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--olive-green);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: var(--deep-green);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: var(--olive-green);
+        }
+
+        /* FLASH CONTAINER */
+        .flash-container {
+            position: absolute;
+            top: -70px;
+            left: 0;
+            width: 100%;
+        }
+
+        /* ALERT BASE */
+        .alert {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideFadeIn 0.5s forwards;
+        }
+
+        .success {
+            background: var(--muted-green);
+            color: #1a3d0a;
+        }
+
+        .error {
+            background: #ffe5e5;
+            color: var(--error-red);
+            border-left: 4px solid var(--error-red);
+        }
+
+        .close-btn {
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* ANIMATION */
+        @keyframes slideFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .link a {
+            color: var(--golden-orange);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+
+        <div class="flash-container">
+            {% for message in app.flashes('success') %}
+                <div class="alert success">
+                    <span>{{ message }}</span>
+                    <span class="close-btn" onclick="closeAlert(this)">×</span>
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('error') %}
+                <div class="alert error">
+                    <span>{{ message }}</span>
+                    <span class="close-btn" onclick="closeAlert(this)">×</span>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% block body %}{% endblock %}
+    </div>
+
+    <script>
+        // Auto-dismiss after 4 seconds
+        setTimeout(() => {
+            document.querySelectorAll('.alert').forEach(alert => {
+                alert.style.animation = "fadeOut 0.5s forwards";
+                setTimeout(() => alert.remove(), 500);
+            });
+        }, 4000);
+
+        // Manual close
+        function closeAlert(element) {
+            const alert = element.parentElement;
+            alert.style.animation = "fadeOut 0.5s forwards";
+            setTimeout(() => alert.remove(), 500);
+        }
+    </script>
+</body>
+</html>

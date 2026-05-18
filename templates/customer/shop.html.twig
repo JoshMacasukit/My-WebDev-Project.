@@ -1,0 +1,25 @@
+{% extends 'customer/layout.html.twig' %}
+{% block body %}
+
+<h1>Shop Fresh Produce</h1>
+
+{% for p in products %}
+<div class="card">
+    <strong>{{ p.name }}</strong><br>
+    ₱{{ p.price }}<br>
+    Stock: {{ p.stock }}
+
+    {% if p.stock > 0 %}
+    <form method="post" action="{{ path('app_customer_cart') }}">
+        <input type="hidden" name="id" value="{{ p.id }}">
+        <button>Add to Cart</button>
+    </form>
+    {% else %}
+        <p style="color:red;">Out of Stock</p>
+    {% endif %}
+</div>
+{% else %}
+<div class="card">No products available.</div>
+{% endfor %}
+
+{% endblock %}

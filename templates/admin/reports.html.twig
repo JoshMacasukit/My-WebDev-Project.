@@ -1,0 +1,54 @@
+{% extends 'admin/layout.html.twig' %}
+{% block body %}
+
+<h2>Advanced Reports</h2>
+
+<div class="stats-grid">
+    <div class="stat-box">
+        <h3>{{ users }}</h3>
+        Users
+    </div>
+    <div class="stat-box">
+        <h3>{{ products }}</h3>
+        Products
+    </div>
+    <div class="stat-box">
+        <h3>{{ orders }}</h3>
+        Orders
+    </div>
+    <div class="stat-box">
+        <h3>₱{{ sales }}</h3>
+        Sales
+    </div>
+</div>
+
+<div class="card">
+    <canvas id="salesChart"></canvas>
+</div>
+
+<script>
+new Chart(document.getElementById('salesChart'), {
+    type: 'line',
+    data: {
+        labels: ['Users','Orders','Deliveries'],
+        datasets: [{
+            label: 'System Overview',
+            data: [{{ users }},{{ orders }},{{ deliveries }}],
+            borderColor:'#255612',
+            fill:false
+        }]
+    }
+});
+</script>
+
+<h3>Recent Audit Logs</h3>
+
+<div class="card">
+    {% for log in logs|slice(0,10) %}
+        <p><strong>{{ log.time }}</strong> - {{ log.message }}</p>
+    {% else %}
+        <p>No logs found.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

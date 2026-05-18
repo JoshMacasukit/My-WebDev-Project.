@@ -1,0 +1,26 @@
+{% extends 'admin/layout.html.twig' %}
+{% block body %}
+<h2>Orders</h2>
+
+{% for o in orders %}
+<div class="card">
+    <strong>ID:</strong> {{ o.id }}<br>
+    <strong>Status:</strong> {{ o.status }}<br>
+    <strong>Date:</strong> {{ o.date ?? 'N/A' }}<br>
+    <strong>Total:</strong> ₱{{ o.total ?? 0 }}
+
+    <form method="post">
+        <input type="hidden" name="id" value="{{ o.id }}">
+        <select name="status">
+            <option>Pending Delivery</option>
+            <option>Delivered</option>
+        </select>
+        <button name="action" value="status">Update Status</button>
+        <button name="action" value="cancel">Cancel</button>
+    </form>
+</div>
+{% else %}
+<div class="card">No orders found.</div>
+{% endfor %}
+
+{% endblock %}

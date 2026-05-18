@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign Up - FreshBasket{% endblock %}
+
+{% block body %}
+    <h1>Create Account</h1>
+    <div class="subtitle">Join FreshBasket Dumaguete</div>
+
+    <form method="post">
+        <input type="text" name="name" placeholder="Full Name">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password (min 6 characters)">
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <div class="link">
+        Already have an account?
+        <a href="{{ path('app_login') }}">Login</a>
+    </div>
+{% endblock %}

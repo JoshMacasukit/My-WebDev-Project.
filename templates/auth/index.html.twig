@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FreshBasket{% endblock %}
+
+{% block body %}
+<h1>FreshBasket</h1>
+<p class="subtitle">Bringing freshness to your doorstep</p>
+
+<a href="{{ path('app_test_login') }}">
+    <button>Login</button>
+</a>
+
+<a href="{{ path('app_test_signup') }}">
+    <button style="background:#D5921F; margin-top:10px;">Sign Up</button>
+</a>
+{% endblock %}

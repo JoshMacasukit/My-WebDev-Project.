@@ -1,0 +1,25 @@
+{% extends 'admin/layout.html.twig' %}
+{% block body %}
+<h2>Products</h2>
+
+<form method="post">
+<input type="hidden" name="action" value="add">
+<input name="name" placeholder="Name">
+<input name="price" placeholder="Price">
+<input name="stock" placeholder="Stock">
+<button>Add Product</button>
+</form>
+
+{% for p in products %}
+<div class="card">
+<form method="post">
+<input type="hidden" name="id" value="{{ p.id }}">
+<input name="name" value="{{ p.name }}">
+<input name="price" value="{{ p.price }}">
+<input name="stock" value="{{ p.stock }}">
+<button name="action" value="edit">Edit</button>
+<button name="action" value="delete">Delete</button>
+</form>
+</div>
+{% endfor %}
+{% endblock %}

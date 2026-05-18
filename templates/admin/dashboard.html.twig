@@ -1,0 +1,43 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body %}
+
+<h2>Dashboard Overview</h2>
+
+<div class="stats-grid">
+    <div class="stat-box">
+        <h3>{{ users }}</h3>
+        Registered Users
+    </div>
+    <div class="stat-box">
+        <h3>{{ products }}</h3>
+        Products
+    </div>
+    <div class="stat-box">
+        <h3>{{ orders }}</h3>
+        Orders
+    </div>
+    <div class="stat-box">
+        <h3>₱{{ sales }}</h3>
+        Total Sales
+    </div>
+</div>
+
+<div class="card">
+    <canvas id="dashboardChart"></canvas>
+</div>
+
+<script>
+new Chart(document.getElementById('dashboardChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Users','Products','Orders','Delivered'],
+        datasets: [{
+            data: [{{ users }},{{ products }},{{ orders }},{{ delivered }}],
+            backgroundColor:['#255612','#818234','#D5921F','#C1C074']
+        }]
+    }
+});
+</script>
+
+{% endblock %}
